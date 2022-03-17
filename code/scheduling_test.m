@@ -8,10 +8,15 @@ clear
 %% Dati dei processi
 
 % Un generico processo e' descritto come Pi = (C,T,D), con T=D
-P1 = [4,17,17];
-P2 = [3,11,11];
-P3 = [1,22,22];
-%P3 = [1,3,3]; analisi interrotta
+% P1 = [4,17,17];
+% P2 = [3,11,11];
+% P3 = [1,22,22];
+
+P1 = [5,20,20];
+P2 = [2,10,10];
+P3 = [1,12,12];
+
+
 
 % Matrice dei parametri dei processi
 
