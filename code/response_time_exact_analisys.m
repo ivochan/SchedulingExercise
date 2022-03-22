@@ -4,7 +4,7 @@ function [] = response_time_exact_analisys(n,c,t,d)
 
     %% Calcolo della priorita' dei processi
 
-    [alpha,min_p_index] = process_priority_calculation(t);
+    [alpha,min_p_index,max_p_index] = process_priority_calculation(t);
     
     % vettore delle priorita'
     fprintf('Il vettore delle priorità è alpha è : [');
@@ -12,7 +12,30 @@ function [] = response_time_exact_analisys(n,c,t,d)
     fprintf('%g]\n', alpha(end));
     
     % processo con priorita' minore
-    fprintf('\nIl processo a priorità minore è P%d.\n\n',min_p_index)
+    fprintf('\nIl processo a priorità minore è P%d.',min_p_index)
+    
+    % processo con priorita' maggiore
+    fprintf('\nIl processo a priorità maggiore è P%d.\n\n',max_p_index)
+    
+    % high priority set di ogni processo
+    hp_M = zeros(n);
+    
+    % si iterano le righe della matrice del set hp
+    for i = 1:n
+        % si iterano le colonne
+        for j = 1:n
+            % si popola l'high priority set del processo i-esimo
+            % iterando il vettore delle priorita'
+            if alpha(i) < alpha(j)
+                % il processo i-esimo e' meno prioritatio del processo
+                % j-esimo
+                hp_M(i,j) = 1;
+            end
+        % for colonne        
+        end
+    % for righe
+    end
+    
     
     %% inizializzazioni
     % sommatoria
@@ -35,14 +58,18 @@ function [] = response_time_exact_analisys(n,c,t,d)
             for j = 1:n
                 % si esclude il processo corrente dal calcolo
                 if j ~= i
-                    % fattore pre_Ri/Tj
-                    factor = pre_Wi/t(j);
-                    % funzione di ceiling del fattore precedente
-                    ceiling_factor = ceil(factor);
-                    % prodotto
-                    mul = ceiling_factor*c(j);
-                    % sommatoria
-                    sum = sum + mul;               
+                    % si considera il processo che appartiene all' hp set
+                    if hp_M(i,j)
+                        % fattore pre_Ri/Tj
+                        factor = pre_Wi/t(j);
+                        % funzione di ceiling del fattore precedente
+                        ceiling_factor = ceil(factor);
+                        % prodotto
+                        mul = ceiling_factor*c(j);
+                        % sommatoria
+                        sum = sum + mul; 
+                    % fi    
+                    end               
                 else
                     % per il processo i-esimo si conta solo il costo di
                     % esecuzione
@@ -81,10 +108,10 @@ function [] = response_time_exact_analisys(n,c,t,d)
         end
     % end for           
     end
-    
+
     % se la procedura non e' stata interrotta allora il task set e'
     % schedulabile
     fprintf('\nIl task set è schedulabile con Rate Monotonic.\n');
-
+% end function
 end
    
