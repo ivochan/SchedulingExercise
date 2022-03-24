@@ -20,10 +20,10 @@ function [U] = processor_utilization_factor(n,c,t)
     % se uno dei due e' nullo termina qui l'analisi
     if TF_c == 1 || TF_t == 1
         % la matrice ricevuta come parametro e' nulla
-        disp('La matrice ricevuta come parametro non contiene elementi.');
+        fprintf('La matrice ricevuta come parametro non contiene elementi.');
     else
         % si procede con l'analisi perche' la matrice non e' nulla
-        disp('Si procede con il test di schedulabilità dei processi dati ...');
+        fprintf('Si procede con il test di schedulabilità dei processi dati ...\n');
     
         %% Calcolo del fattore di Utilizzo della CPU
         for i = 1:n 
