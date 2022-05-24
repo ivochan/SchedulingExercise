@@ -24,5 +24,15 @@ Il contenuto della directory *code*, invece, è il seguente:
 - lo script *LL_conditions_evaluation*, che permette di calcolare le condizioni (necessaria e sufficiente) di Liu & Layland;
 - il file *response_time_exact_analisys*, che fornisce i tempi di risposta dei rispettivi processi, tramite lo svolgimento dell'analisi esatta di Joseph & Pandya;
 - la funzione *process_priority_calculation*, che calcola la priorità di ogni processo in esame, determinando quale sia quello con priorità minore ed il processo con priorità maggiore;
--  la funzione *deadline_check*, che si occupa di verificare il soddisfacimento della relazione che implica che il tempo di risposta di un dato processo sia minore o uguale della sua deadline, alfine di garantirne la schedulazione;
+-  la funzione *deadline_check*, che si occupa di verificare il soddisfacimento della relazione che implica che il tempo di risposta di un dato processo sia minore o uguale della sua deadline, al fine di garantirne la schedulazione;
+
+
+
+## TODO
+
+- implementazione di EDF;
+- implementazione di RM;
+- test delle performance dei due algoritmi di schedulazione;
+- verificare se esistono implementazione integrate in Matlab;
+- aggiungere nella presentazione il caso in cui si verifica il deadlock nel Priority Inversion Problem;
 
